@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:padding="48dp"
+    tools:context=".ui.SplashScreen"
+    tools:ignore="HardcodedText,UnusedAttribute">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="logo"
+        android:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/btn_to_login"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/custom_button"
+        android:clickable="true"
+        android:textColor="@color/colorPrimary"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:text="LOGIN" />
+
+</RelativeLayout>
