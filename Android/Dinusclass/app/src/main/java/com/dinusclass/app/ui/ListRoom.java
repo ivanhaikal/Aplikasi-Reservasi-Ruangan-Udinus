@@ -5,9 +5,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class ListRoom extends AppCompatActivity implements AdapterRoom.ItemClickListener {
     ProgressDialog pd;
-    EditText etSearch;
+    SearchView svSearch;
     RecyclerView rvRoom;
     List<ModelRoom> mItemsRoom;
     AdapterRoom mAdapterRoom;
@@ -38,17 +39,25 @@ public class ListRoom extends AppCompatActivity implements AdapterRoom.ItemClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
-        etSearch = findViewById(R.id.et_search);
+        svSearch = findViewById(R.id.sv_search);
         rvRoom = findViewById(R.id.rv_room);
         mItemsRoom = new ArrayList<>();
-        mAdapterRoom = new AdapterRoom(ListRoom.this, mItemsRoom);
-        mAdapterRoom.setClickListener(this);
-        rvRoom.setLayoutManager(new LinearLayoutManager(ListRoom.this));
-        rvRoom.setAdapter(mAdapterRoom);
         AndroidNetworking.initialize(getApplicationContext());
         loadRoom();
 
-        etSearch.setHint("cari " + getIntent().getStringExtra("room"));
+        svSearch.setQueryHint("search " + getIntent().getStringExtra("room"));
+        svSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mAdapterRoom.filter(newText);
+                return false;
+            }
+        });
     }
 
     public void loadRoom() {
@@ -67,6 +76,7 @@ public class ListRoom extends AppCompatActivity implements AdapterRoom.ItemClick
                                 JSONObject data = response.getJSONObject(i);
                                 if (data.getString("type").equals(getIntent().getStringExtra("room"))) {
                                     mItemsRoom.add(new ModelRoom(
+                                            data.getString("id"),
                                             data.getString("code"),
                                             data.getString("name"),
                                             data.getString("capacity"),
@@ -78,7 +88,10 @@ public class ListRoom extends AppCompatActivity implements AdapterRoom.ItemClick
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        mAdapterRoom.notifyDataSetChanged();
+                        mAdapterRoom = new AdapterRoom(ListRoom.this, mItemsRoom);
+                        mAdapterRoom.setClickListener(ListRoom.this);
+                        rvRoom.setLayoutManager(new LinearLayoutManager(ListRoom.this));
+                        rvRoom.setAdapter(mAdapterRoom);
                         pd.dismiss();
                     }
 
@@ -92,6 +105,13 @@ public class ListRoom extends AppCompatActivity implements AdapterRoom.ItemClick
 
     @Override
     public void onClick(View view, int position) {
-
+        Intent intent = new Intent(ListRoom.this, PreviewRoom.class);
+        intent.putExtra("id", mItemsRoom.get(position).getId());
+        intent.putExtra("code", mItemsRoom.get(position).getCode());
+        intent.putExtra("name", mItemsRoom.get(position).getName());
+        intent.putExtra("capacity", mItemsRoom.get(position).getCapacity());
+        intent.putExtra("image", mItemsRoom.get(position).getImage());
+        intent.putExtra("type", mItemsRoom.get(position).getType());
+        startActivity(intent);
     }
 }

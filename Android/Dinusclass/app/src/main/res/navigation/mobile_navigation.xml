@@ -8,19 +8,19 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.dinusclass.app.fragment.HomeFragment"
-        android:label="awal"
+        android:label="home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.dinusclass.app.fragment.NotificationsFragment"
-        android:label="notifikasi"
+        android:label="notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_me"
         android:name="com.dinusclass.app.fragment.MeFragment"
-        android:label="saya"
+        android:label="me"
         tools:layout="@layout/fragment_me" />
 
 </navigation>

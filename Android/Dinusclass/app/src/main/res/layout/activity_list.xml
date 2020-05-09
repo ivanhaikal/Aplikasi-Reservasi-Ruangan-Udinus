@@ -24,20 +24,15 @@
             android:contentDescription="logo"
             android:src="@drawable/logo3" />
 
-        <EditText
-            android:id="@+id/et_search"
-            android:layout_width="match_parent"
+        <SearchView
+            android:id="@+id/sv_search"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="search"
             android:background="@drawable/custom_search"
-            android:drawableStart="@drawable/ic_search"
-            android:drawablePadding="8dp"
-            android:drawableTint="@android:color/darker_gray"
-            android:hint="cari"
-            android:inputType="text"
-            android:maxLength="20"
-            android:textColorHint="@android:color/darker_gray"
-            android:textSize="14sp" />
+            android:inputType="text" />
 
     </LinearLayout>
 

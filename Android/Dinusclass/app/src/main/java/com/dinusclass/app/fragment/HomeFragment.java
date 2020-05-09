@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
         TextView tvName;
         LinearLayout llHall, llClass, llLab;
 
-        tvName = root.findViewById(R.id.name);
+        tvName = root.findViewById(R.id.tv_name);
         llHall = root.findViewById(R.id.ll_hall);
         llClass = root.findViewById(R.id.ll_class);
         llLab = root.findViewById(R.id.ll_lab);

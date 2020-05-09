@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray"
+    android:paddingBottom="8dp"
+    tools:context=".ui.PreviewRoom"
+    tools:ignore="HardcodedText">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="170dp">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_margin="16dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:contentDescription="back"
+            android:focusable="true"
+            android:src="@drawable/ic_arrow_back" />
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:contentDescription="room"
+            android:scaleType="centerCrop" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="180dp"
+        android:background="#FFFFFF"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_layout3"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="210dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="18dp"
+            android:background="@color/gray" />
+
+        <Button
+            android:id="@+id/btn_date"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custom_button2"
+            android:text="Choose date"
+            android:textAllCaps="false"
+            android:textColor="#FFF" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="#000"
+            android:textSize="14sp"
+            android:visibility="gone" />
+
+        <Spinner
+            android:id="@+id/sp_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/custom_spinner" />
+
+        <View
+            android:layout_width="210dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/gray" />
+
+        <Button
+            android:id="@+id/btn_check"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:background="@drawable/custom_button2"
+            android:text="CHECK ROOM AVAILABILITY"
+            android:textColor="#FFF" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -41,6 +41,7 @@ public class Login extends AppCompatActivity {
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
     public static final String TAG_NIM_NPP = "nim_npp";
+    public static final String TAG_ID = "id";
     public static final String TAG_NAME = "name";
     public static final String TAG_GENDER = "gender";
     public static final String TAG_DOB = "dob";
@@ -118,6 +119,7 @@ public class Login extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedpreferences.edit();
                                 editor.putBoolean(session_status, true);
                                 editor.putString(TAG_NIM_NPP, nim_npp);
+                                editor.putString(TAG_ID, response.getString(TAG_ID));
                                 editor.putString(TAG_NAME, response.getString(TAG_NAME));
                                 editor.putString(TAG_GENDER, response.getString(TAG_GENDER));
                                 editor.putString(TAG_DOB, response.getString(TAG_DOB));

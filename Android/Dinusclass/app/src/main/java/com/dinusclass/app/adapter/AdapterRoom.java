@@ -17,13 +17,16 @@ import com.dinusclass.app.R;
 import com.dinusclass.app.model.ModelRoom;
 import com.dinusclass.app.util.ServerAPI;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
 
 public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.HolderData> {
     private Context context;
     private List<ModelRoom> mItems;
+    private ArrayList<ModelRoom> arrayList;
     private ItemClickListener clickListener;
 
     public interface ItemClickListener {
@@ -33,6 +36,8 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.HolderData> {
     public AdapterRoom(Context context, List<ModelRoom> items) {
         this.context = context;
         this.mItems = items;
+        this.arrayList = new ArrayList<>();
+        this.arrayList.addAll(items);
     }
 
     @NonNull
@@ -90,5 +95,20 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.HolderData> {
 
     public void setClickListener(ItemClickListener clickListener) {
         this.clickListener = clickListener;
+    }
+
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        mItems.clear();
+        if (charText.length() == 0) {
+            mItems.addAll(arrayList);
+        } else {
+            for (ModelRoom wp : arrayList) {
+                if (wp.getName().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    mItems.add(wp);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }
