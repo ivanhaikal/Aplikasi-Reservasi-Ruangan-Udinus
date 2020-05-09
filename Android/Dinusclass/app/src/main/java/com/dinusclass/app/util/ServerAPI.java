@@ -1,7 +1,7 @@
 package com.dinusclass.app.util;
 
 public class ServerAPI {
-    private static final String URL = "https://10.0.2.2/";
+    private static final String URL = "http://10.0.2.2/";
 
     ///file image
     public static final String URL_FILE_ACCOUNT = URL + "dinusclass/public/dataaccount/";
